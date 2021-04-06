@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardmapper">
+
+	<resultMap type="BoardDto" id="BoardMap">
+		<result property="article_no" column="ARTICLE_NO" />
+		<result property="brd_no" column="BRD_NO" />
+		<result property="admin_writer" column="ADMIN_WRITER" />
+		<result property="mem_writer" column="MEM_WRITER" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="regdate" column="REGDATE" />
+		<result property="hit" column="HIT" />
+	</resultMap>
+
+
+
+	<select id="selectList" resultType="BoardDto">
+		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE,MEM_NAME
+		FROM ALL_BOARD JOIN LOGINBOARD
+		USING (MEM_NO)
+		ORDER BY ARTICLE_NO DESC
+	</select>
+	
+	<select id="selectOne" resultType="BoardDto" >
+		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE ,MEM_NAME
+		FROM ALL_BOARD JOIN LOGINBOARD
+		USING (MEM_NO)
+		WHERE ARTICLE_NO = #{article_no}
+	</select>
+
+	<insert id="insert" parameterType="BoardDto">
+	
+		INSERT INTO ALL_BOARD
+		VALUES(ALL_BOARDSEQ.NEXTVAL,#{brd_no}, #{mem_no},#{title},#{content},SYSDATE,#{hit},#{image})
+	</insert>
+
+	<update id="update" parameterType="BoardDto">
+		UPDATE ALL_BOARD 
+		SET TITLE = #{title}, CONTENT = #{content}
+		WHERE ARTICLE_NO= #{article_no}
+	</update>
+
+	<delete id="delete" parameterType="BoardDto">
+		DELETE FROM ALL_BOARD 
+		WHERE ARTICLE_NO = #{article_no}
+	</delete>
+	
+	<select id="count" resultType="BoardDto">
+		SELECT COUNT(*) FROM BOARD
+	</select>
+	
+	<select id="paginglist" resultType="BoardDto">
+		<![CDATA[
+		SELECT A.ARTICLE_NO, A.TITLE, A.MEM_NAME, A.REGDATE, A.HIT FROM 
+		(SELECT ROWNUM AS RNUM, A.ARTICLE_NO, A.TITLE, A.MEM_NAME, A.REGDATE, A.HIT FROM
+		SELECT ARTICLE_NO, TITLE, MEM_NAME, REGDATE, HIT FROM ALL_BOARD
+		ORDER BY ARTICLE_NO DESC) A
+		WHERE ROWNUM <= #{endRow}) B
+		WHERE B.RNUM > #{startRow}
+		AND BRD_NO = 1
+		]]>
+	</select>
+
+</mapper>

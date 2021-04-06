@@ -1,0 +1,12 @@
+127.0.0.1 - - [27/Mar/2021:15:40:12 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:14 +0900] "GET /Semi/ HTTP/1.1" 200 15262
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:14 +0900] "GET /Semi/resources/css/header.css HTTP/1.1" 200 159
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:14 +0900] "GET /Semi/resources/css/index.css HTTP/1.1" 200 549
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:14 +0900] "GET /Semi/resources/img/logo.png HTTP/1.1" 200 26861
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:14 +0900] "GET /Semi/resources/img/profile.jpg HTTP/1.1" 200 26527
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:14 +0900] "GET /Semi/resources/img/dog.jpg HTTP/1.1" 200 1084187
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:14 +0900] "GET /Semi/semiIndexChat HTTP/1.1" 101 -
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:29 +0900] "GET /Semi/donate.jsp HTTP/1.1" 200 254
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:36 +0900] "GET /Semi/login.jsp HTTP/1.1" 200 4132
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:39 +0900] "GET /Semi/login.do?command=joinform HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [27/Mar/2021:15:40:39 +0900] "GET /Semi/join_terms.jsp HTTP/1.1" 200 2735

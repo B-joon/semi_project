@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\kas78\Desktop\khkhkh\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3913069819.index
+\Semi\src
+C:\Users\kas78\Desktop\khkhkh\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3875976298.index
+\Semi\src

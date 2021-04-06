@@ -1,0 +1,84 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.db.SqlMapConfig;
+import com.dto.BoardDto;
+import com.dto.PagingDto;
+
+public class PagingDao extends SqlMapConfig {
+	
+	String namespace = "boardmapper.";
+
+	// ================= select list with pagination ================= //
+	public List<MVCBoardDto> selectListWPage(int startRow, int endRow) {
+		Connection con = getConnection();
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+
+		List<MVCBoardDto> list = new ArrayList<MVCBoardDto>();
+
+		endRow += startRow;
+		
+		try {
+			psmt = con.prepareStatement(SELECT_LIST_PAGING_SQL);
+			psmt.setInt(1, endRow);
+			psmt.setInt(2, startRow);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				MVCBoardDto dto = new MVCBoardDto();
+				dto.setSeq(rs.getInt(1));
+				dto.setWriter(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setRegdate(rs.getDate(5));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(psmt);
+			close(con);
+		}
+		return list;
+	}
+
+	// ================= total count for pagination ================= //
+	public int getTotalCount() {
+		int total = 0;
+
+		Connection con = getConnection();
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+
+		try {
+			psmt = con.prepareStatement(TOTAL_COUNT_SQL);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(psmt);
+			close(con);
+		}
+		return total;
+	}
+
+
+}

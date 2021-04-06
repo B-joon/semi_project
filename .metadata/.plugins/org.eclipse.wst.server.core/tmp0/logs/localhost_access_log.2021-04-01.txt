@@ -1,0 +1,5 @@
+127.0.0.1 - - [01/Apr/2021:19:49:47 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [01/Apr/2021:19:49:49 +0900] "GET /Semi/petboard_adopt_checklist.jsp HTTP/1.1" 200 12648
+0:0:0:0:0:0:0:1 - - [01/Apr/2021:19:49:49 +0900] "GET /Semi/resources/css/header.css HTTP/1.1" 200 226
+0:0:0:0:0:0:0:1 - - [01/Apr/2021:19:49:49 +0900] "GET /Semi/resources/img/logo.png HTTP/1.1" 200 26861
+0:0:0:0:0:0:0:1 - - [01/Apr/2021:19:49:49 +0900] "GET /favicon.ico HTTP/1.1" 404 818

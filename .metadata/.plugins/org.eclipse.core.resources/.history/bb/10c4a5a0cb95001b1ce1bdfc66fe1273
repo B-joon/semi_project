@@ -1,0 +1,16 @@
+package com.biz;
+
+import java.util.List;
+
+import com.dao.PagingDao;
+import com.dto.BoardDto;
+
+public class PagingBiz {
+	
+	PagingDao dao = new PagingDao();
+
+	public List<BoardDto> paymentListPaging(int startRow, int endRow) {
+		return dao.paymentListPaging(startRow, endRow);
+	}
+	
+}

@@ -1,0 +1,236 @@
+package com.controller;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+
+import org.jsoup.*;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class Crawling {
+	//	File file = new File("20210319142039.png");
+	//	System.out.println(file.getAbsolutePath()); // 절대 경로
+	//	System.out.println(file.getCanonicalPath()); // 상대 경로
+	//    File file = new File("\\WebContent\\resources\\saveFile");
+	//    System.out.println("현재 프로젝트의 경로 : "+file.getCanonicalPath());
+
+	// WEB-INF의 경로에서 Json파일 가져오기
+	// File file = new File("WebContent/WEB-INF/sample.json");
+
+	//    String rootPath = System.getProperty("7.mix.jpg");
+	//    System.out.println("현재 프로젝트의 경로 : "+rootPath );
+
+	//	String path = "WebContent\\resources\\saveFile\\";
+	//	File dir = new File(path);
+	//	File[] fileList = dir.listFiles();
+	//	
+	//	for (File file : fileList) {
+	//		if (file.isFile()) {
+	//			String fileName = file.getName();
+	//			int index = fileName.indexOf(".");
+	//			String cutName = fileName.substring(0, index);
+	//			list.add(cutName);
+	//		}
+	//	}
+
+	public String CatCrawling(String cat) throws IOException {
+
+
+
+		// 크롤링할 웹 주소
+		String contentUrl = "https://www.daejeon.go.kr/ani/AniStrayAnimalList.do?flag=2&menuSeq=3090";
+		Document contentDoc = null;
+
+		try {
+			// 웹과 연결
+			contentDoc = Jsoup.connect(contentUrl).get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 필요한 정보의 위치
+		Elements content = contentDoc.select("ul.animal_list01");
+
+		System.out.println("=============================================");
+		// 지정한 위치를 저장
+		Iterator<Element> ie1 = content.select("li > ul > li").iterator();
+
+		List<String> contentList = new ArrayList<String>();
+		String val = "";
+		int count = 1;
+		// 5개 1세트를 만듬
+		while (ie1.hasNext()) {
+			val += ie1.next().text() + "\n";
+			if (count % 5 == 0) {
+				contentList.add(val);
+				val = "";
+			}
+			count++;
+		}
+		System.out.println("=============================================");
+		// 출력
+		for (int i = 0; i < contentList.size(); i++) {
+			System.out.println(contentList.get(i));
+			System.out.println("=============================================");
+		}
+		// 크롤링한 파일명을 다르게 하기 위해 random함수 사용
+		Random random = new Random();
+		// 이미지 크롤링 하기위해 해당 웹과 연결
+		Document doc = Jsoup.connect("https://www.daejeon.go.kr/ani/AniStrayAnimalList.do?flag=2&menuSeq=3090").get();
+		// 이미지경로
+		String crawlingImg = "https://www.daejeon.go.kr";
+		// 해당 이미지가 담겨져 있는 상위 태그 클레스
+		Element element = doc.select("ul.animal_list01").get(0);
+		// 이미지가 있는 태그
+		Elements img = element.select("img");
+
+		List<String> list = new ArrayList<String>();
+		// 저장한 이미지를 불러옴
+		String path = "WebContent\\resources\\saveFile\\cat\\";
+		File dir = new File(path);
+		File[] fileList = dir.listFiles();
+
+		for (Element e : img) {
+			// 이미지를 저장할 때마다 파일명을 다르게 해주기 위하여
+			String ran = String.valueOf(random.nextInt(50000));
+			// 저장된 파일을 불러와 확장자를 제거한 후 리스트에 담아줌
+			for (File file : fileList) {
+				if (file.isFile()) {
+					String fileName = file.getName();
+					// 파일명을 비교하기 위해서 .을 기준으로 자름
+					int index = fileName.indexOf(".");
+					String cutName = fileName.substring(0, index);
+					// 확장자를 제거한 파일명을 저장
+					list.add(cutName);
+				}
+			}
+			// 저장된 파일 중복 제거
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).equals(ran)) {
+					i = 0;
+					ran = String.valueOf(random.nextInt(500));
+				}
+			}
+			// 크롤링할 이미지 경로
+			String url = crawlingImg+e.getElementsByAttribute("src").attr("src");
+			URL imgUrl = new URL(url);
+			BufferedImage jpg = ImageIO.read(imgUrl);
+			// 파일 저장 경로
+			File file = new File("WebContent\\resources\\saveFile\\cat\\"+ran+".jpg");
+			ImageIO.write(jpg, "jpg", file);
+		}
+
+	}
+
+	public List<String> DokCrawling() throws IOException {
+
+		List<String> successList = new ArrayList<String>();
+
+		// 크롤링할 웹 주소
+		String contentUrl = "https://www.daejeon.go.kr/ani/AniStrayAnimalList.do?flag=2&menuSeq=3090";
+		Document contentDoc = null;
+
+		try {
+			// 웹과 연결
+			contentDoc = Jsoup.connect(contentUrl).get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 필요한 정보의 위치
+		Elements content = contentDoc.select("ul.animal_list01");
+
+		System.out.println("=============================================");
+		// 지정한 위치를 저장
+		Iterator<Element> ie1 = content.select("li > ul > li").iterator();
+
+		List<String> contentList = new ArrayList<String>();
+		String val = "";
+		int count = 1;
+		// 5개 1세트를 만듬
+		while (ie1.hasNext()) {
+			val += ie1.next().text() + "\n";
+			if (count % 5 == 0) {
+				contentList.add(val);
+				val = "";
+			}
+			count++;
+		}
+		System.out.println("=============================================");
+		// 출력
+		for (int i = 0; i < contentList.size(); i++) {
+			System.out.println(contentList.get(i));
+			System.out.println("=============================================");
+		}
+		// 크롤링한 파일명을 다르게 하기 위해 random함수 사용
+		Random random = new Random();
+		// 이미지 크롤링 하기위해 해당 웹과 연결
+		Document doc = Jsoup.connect("https://www.daejeon.go.kr/ani/AniStrayAnimalList.do?flag=2&menuSeq=3090").get();
+		// 이미지경로
+		String crawlingImg = "https://www.daejeon.go.kr";
+		// 해당 이미지가 담겨져 있는 상위 태그 클레스
+		Element element = doc.select("ul.animal_list01").get(0);
+		// 이미지가 있는 태그
+		Elements img = element.select("img");
+
+		List<String> list = new ArrayList<String>();
+		// 저장한 이미지를 불러옴
+		String path = "WebContent\\resources\\saveFile\\dok\\";
+		File dir = new File(path);
+		File[] fileList = dir.listFiles();
+
+		for (Element e : img) {
+			// 이미지를 저장할 때마다 파일명을 다르게 해주기 위하여
+			String ran = String.valueOf(random.nextInt(50000));
+			// 저장된 파일을 불러와 확장자를 제거한 후 리스트에 담아줌
+			for (File file : fileList) {
+				if (file.isFile()) {
+					String fileName = file.getName();
+					// 파일명을 비교하기 위해서 .을 기준으로 자름
+					int index = fileName.indexOf(".");
+					String cutName = fileName.substring(0, index);
+					// 확장자를 제거한 파일명을 저장
+					list.add(cutName);
+				}
+			}
+			// 저장된 파일 중복 제거
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).equals(ran)) {
+					i = 0;
+					ran = String.valueOf(random.nextInt(500));
+				}
+			}
+			// 크롤링할 이미지 경로
+			String url = crawlingImg+e.getElementsByAttribute("src").attr("src");
+			URL imgUrl = new URL(url);
+			BufferedImage jpg = ImageIO.read(imgUrl);
+			// 파일 저장 경로
+			File file = new File("WebContent\\resources\\saveFile\\dok\\"+ran+".jpg");
+			ImageIO.write(jpg, "jpg", file);
+		}
+
+		String finishPath = "WebContent\\resources\\saveFile\\dok\\";
+		File finishDir = new File(path);
+		File[] finishFileList = dir.listFiles();
+
+		// 값을 리턴해주기위해 successList에 저장
+		for (int i = 0; i < finishFileList.length; i++) {
+			for (File finishFile : finishFileList) {
+				if (finishFile.isFile()) {
+					String fileName = finishFile.getName();
+					String all = contentList.get(i) + fileName;
+					successList.add(all);
+				}
+			}
+		}
+		
+		return successList;
+	}
+}

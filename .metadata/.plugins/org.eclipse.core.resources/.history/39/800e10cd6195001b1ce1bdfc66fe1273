@@ -1,0 +1,45 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.db.SqlMapConfig;
+import com.dto.PagingDto;
+
+public class PagingDao extends SqlMapConfig {
+
+	  public ArrayList<PagingDto> getList(int startRow, int endRow) {
+	 
+	    ArrayList<PagingDto> list = new ArrayList<PagingDto>();
+	     
+	    return list;
+	  }
+	   
+	  public int getTotalCount(){
+	    int total = 0;
+	     
+	    try {
+	      conn = dbcp.getConnection();
+	       
+	      sql = "select count(*) from board";
+	      pstmt = conn.prepareStatement(sql);
+	       
+	      rs = pstmt.executeQuery();
+	      if(rs.next()){
+	        total = rs.getInt(1);
+	      }
+	    } catch (Exception e){
+	      e.printStackTrace();
+	    } finally {
+	      closeDB();
+	    }
+	    return total;
+	  }
+
+	
+}
