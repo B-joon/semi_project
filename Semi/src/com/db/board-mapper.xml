@@ -19,37 +19,37 @@
 
 	<select id="selectList" resultType="BoardDto">
 		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE,MEM_NAME
-		FROM ALL_BOARD JOIN LOGINBOARD
+		FROM ALL_BOARD JOIN LOGINBOARD1
 		USING (MEM_NO)
 		ORDER BY ARTICLE_NO DESC
 	</select>
 	
 	<select id="selectOne" resultType="BoardDto" >
 		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE ,MEM_NAME
-		FROM ALL_BOARD JOIN LOGINBOARD
+		FROM ALL_BOARD JOIN LOGINBOARD1
 		USING (MEM_NO)
 		WHERE ARTICLE_NO = #{article_no}
 	</select>
 
 	<insert id="insert" parameterType="BoardDto">
 	
-		INSERT INTO ALL_BOARD
-		VALUES(ALL_BOARDSEQ.NEXTVAL,#{brd_no}, #{mem_no},#{title},#{content},SYSDATE,#{hit},#{image})
+		INSERT INTO ALL_BOARD1
+		VALUES(ALL_BOARDSEQ1.NEXTVAL,#{brd_no}, #{mem_no},#{title},#{content},SYSDATE,#{hit},#{image})
 	</insert>
 
 	<update id="update" parameterType="BoardDto">
-		UPDATE ALL_BOARD 
+		UPDATE ALL_BOARD1
 		SET TITLE = #{title}, CONTENT = #{content}
 		WHERE ARTICLE_NO= #{article_no}
 	</update>
 
 	<delete id="delete" parameterType="BoardDto">
-		DELETE FROM ALL_BOARD 
+		DELETE FROM ALL_BOARD1
 		WHERE ARTICLE_NO = #{article_no}
 	</delete>
 	
 	<select id="count" resultType="int">
-		SELECT COUNT(*) FROM ALL_BOARD
+		SELECT COUNT(*) FROM ALL_BOARD1
 		WHERE BRD_NO = 1
 	</select>
 	
@@ -57,7 +57,7 @@
 		<![CDATA[
 		SELECT B.ARTICLE_NO, B.MEM_NO, B.TITLE, B.REGDATE, B.HIT, B.MEM_NAME FROM 
 		(SELECT ROWNUM AS RNUM, A.ARTICLE_NO, A.MEM_NO, A.TITLE, A.REGDATE, A.HIT, A.MEM_NAME FROM
-		(SELECT ARTICLE_NO, MEM_NO, TITLE, REGDATE, HIT, MEM_NAME FROM ALL_BOARD JOIN LOGINBOARD USING(MEM_NO)
+		(SELECT ARTICLE_NO, MEM_NO, TITLE, REGDATE, HIT, MEM_NAME FROM ALL_BOARD1 JOIN LOGINBOARD1 USING(MEM_NO)
 		WHERE BRD_NO = 1
 		ORDER BY ARTICLE_NO DESC) A
 		WHERE ROWNUM <= #{endRow}) B
