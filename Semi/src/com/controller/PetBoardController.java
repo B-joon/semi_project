@@ -14,11 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import com.biz.BoardBiz;
-import com.biz.PetBiz;
 import com.dto.BoardDto;
-import com.dto.PetDto;
 
-@WebServlet("/pet.do")
+@WebServlet("/pet1.do")
 public class PetBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

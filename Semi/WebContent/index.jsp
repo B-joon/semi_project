@@ -52,28 +52,27 @@ System.out.println("session 담겼을까요?"+dto);
     <!-- about 부분 시작 -->
     <section class="about" id="about">
       <div class="title">
-        <h2 class="section-title">About Us</h2>
+        <h2 class="section-title">Introduce</h2>
       </div>
       <div class="content">
         <div class="column col-left">
           <div class="img-card">
-            <img src="resources/indexResources/cat.jpg" alt="">
+            <img src="resources/indexResources/dog&cat.jpg" alt="">
           </div>
         </div>
         <div class="column col-right">
-          <h2 class="content-title">ANIMALNATION</h2>
+          <!-- <h2 class="content-title">소개글</h2> -->
           <p class="paragraph-text" style="font-size: 14pt;">
-          오늘날 전세계적으로 700억여 마리의 동물들이 인간에 의해 태어나고 죽음에 이르고 있습니다. <br>
-          그리고 국내에서는 매년 십만 마리 이상 하루에 약 200마리의 반려동물들이 길거리에 버려지고 있습니다. <br>
-          이 중 새 보호자를 찾거나 원래 집으로 돌아가는 경우도 있지만 대부분은 자연사하거나 안락사 됩니다. <br>
-          인간에 의해 상처받고 고통받는 것에 책임을 느끼고 작은 보탬이 되고자 애니멀네이션을 설립하였습니다. <br>
-
+          오늘날 전세계적으로 700억여 마리의 동물들이 인간에 의해 태어나고 죽음에 이르고 있습니다. 
+          그리고 국내에서는 매년 십만 마리 이상 하루에 약 200마리의 반려동물들이 길거리에 버려지고 있습니다. 
+          이 중 새 보호자를 찾거나 원래 집으로 돌아가는 경우도 있지만 대부분은 자연사하거나 안락사 됩니다. 
+          인간에 의해 상처받고 고통받는 것에 책임을 느끼고 작은 보탬이 되고자 애니멀네이션을 설립하였습니다. 
 		</p>
 	   </div>
       </div>
     </section>
 	<!-- about 부분 종료 -->
-	<!-- about 부분 시작 -->
+	<!-- about1 부분 시작 -->
     <section class="about1" id="about">
       <div class="title1">
         <h2 class="section-title1">About Us</h2>
@@ -82,14 +81,14 @@ System.out.println("session 담겼을까요?"+dto);
         <div class="column col-right">
           <h2 class="content-title1">ANIMALNATION</h2>
           <p class="paragraph-text1" style="font-size: 14pt;">
-          애니멀네이션은 흩어져있는 보호소의 정보를 모아 한눈에 보여주어 중간다리의 역할을 하는 플랫폼입니다.<br> 
-		  저희는 잊혀져 가는 유기동물들의 입양을 도와주고, 운영비용이 모자란 보호소에 후원금을 전달 합니다. <br>
-		  여러분들의 소중한 마음이 모여 올바른 반려동물 문화가 자리잡게 될 것입니다.<br>
+          애니멀네이션은 흩어져있는 보호소의 정보를 모아 한눈에 보여주어 중간다리의 역할을 하는 플랫폼입니다.
+		  저희는 잊혀져 가는 유기동물들의 입양을 도와주고, 운영비용이 모자란 보호소에 후원금을 전달 합니다. 
+		  여러분들의 소중한 마음이 모여 올바른 반려동물 문화가 자리잡게 될 것입니다.
 		</p>
 	   </div>
 	   <div class="column col-left">
           <div class="img-card">
-            <img src="resources/indexResources/cat.jpg" alt="">
+            <img src="resources/indexResources/dogs.jpg" alt="">
           </div>
         </div>
       </div>
@@ -100,38 +99,38 @@ System.out.println("session 담겼을까요?"+dto);
 	<section class="sliderBody">
 		<div class="img-slider">
 	        <div class="slide3 active">
-	            <img src="resources/indexResources/cat.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide1photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 01</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>입양 신청 지원</h2>
+	                <p style="font-size: 16pt;">사지 말고 입양하세요. <br> 한 아이를 입양함으로써 우리 삶에 당장의 변화는 없지만, <br> 그 아이에게는 살아가는 세상의 전부가 바뀝니다. </p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/cat.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide2photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 02</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>입양 후기</h2>
+	                <p style="font-size: 16pt;">따뜻한 품에 안착해 새로운 가족이 된 아이들의 입양 후기를 볼 수 있습니다.</p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/dog.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide3photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 03</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>나와 닮은꼴 동물 찾기</h2>
+	                <p style="font-size: 16pt;">간단히 사진을 업로드하는 것만으로 나와 닮은 동물을 찾아 드립니다.</p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/dog.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide4photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 04</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>주변 병원 및 보호소 안내</h2>
+	                <p style="font-size: 16pt;">가까운 동물병원 및 보호 시설 위치를 안내해 드립니다</p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/dog.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide5photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 05</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>펫닥터</h2>
+	                <p style="font-size: 16pt;">간편한 검색 기능으로 아이들의 이상 증상을 확인하세요 </p>
 	            </div>
 	        </div>
 	        <div class="navigation">
@@ -208,27 +207,27 @@ System.out.println("session 담겼을까요?"+dto);
       <div class="content">
         <div class="card reveal">
           <div class="card-img">
-            <img src="images/work1.jpg" alt="">
+            <img src="resources/img/ch.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="images/work2.jpg" alt="">
+            <img src="resources/img/cha.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="images/work3.jpg" alt="">
+            <img src="resources/img/cj.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="images/work4.jpg" alt="">
+            <img src="resources/img/je.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="images/work5.jpg" alt="">
+            <img src="resources/img/bj.png" alt="">
           </div>
         </div>
       </div>

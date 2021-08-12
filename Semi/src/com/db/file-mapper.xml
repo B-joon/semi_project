@@ -6,7 +6,7 @@
 
 <update id="upload" parameterType="LoginDto">
 
-UPDATE LOGINBOARD1
+UPDATE LOGINBOARD
 SET MEM_IMAGE=#{mem_image}
 WHERE MEM_ID = #{mem_id}
 

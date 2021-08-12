@@ -16,7 +16,7 @@ import com.dto.LoginDto;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/login.do")
+@WebServlet("/login1.do")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -145,7 +145,7 @@ public class LoginController extends HttpServlet {
 				
 				
 			}else{
-				jsResponse(response, "login.do?command=joinform", "회원가입에 실패하였습니다. 회원가입 내용을 확인하세요.");
+				jsResponse(response, "login.jsp", "회원가입에 실패하였습니다. 다시 시도해주세요.");
 				
 				
 			}
@@ -205,7 +205,7 @@ public class LoginController extends HttpServlet {
 			
 			int res = biz.deleteMember(mem_no);
 			if(res>0) {
-				jsResponse(response, "index.jsp", "회원 탈퇴가 완료되었습니다. 언제든지 다시 돌아와주세요 ! ");
+				jsResponse(response, "index.jsp", "회원 탈퇴가 완료되었습니다. 작성하신 글은 모두 삭제됩니다! ");
 				HttpSession session = request.getSession(false);
 		    	session.invalidate();
 			}else {

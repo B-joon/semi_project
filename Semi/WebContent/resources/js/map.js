@@ -26,6 +26,7 @@ var longitude1 = 127.11114750062966;
 
 
 // Api 에서 값을 받아 온다.
+// 선언을 해주지 않으면 리턴을 해주지 못해서 위에서 필드선언 해줌
 async function fetchURL(){
     Animalhospital1 = await fetch('https://openapi.gg.go.kr/Animalhosptl?KEY=00bfb12c126b44e387a7f0ef71a51ee1&pIndex=1&pSize=1000&type=json')
     .then(function(res) {
@@ -50,6 +51,7 @@ async function fetchURL(){
 
 
 // 함수 시작
+// 위 내용을 받아와서 저장
 async function start() {
   await fetchURL();
   pushPositions(Animalhospital1);
@@ -62,22 +64,23 @@ async function start() {
 };
 
 // positon 값에 동물 병원 API 값들 넣어주기
+// 병원
 function pushPositions(inputval){
   for (var i = 0; i < inputval.Animalhosptl[1].row.length; i++) {
-
+	// BSN_STATE_NM에 폐업인것만 제외한 내용을 출력
     if(inputval.Animalhosptl[1].row[i].BSN_STATE_NM !=="폐업"){
       var vals = {
         title: inputval.Animalhosptl[1].row[i].BIZPLC_NM,
-        latlng: new kakao.maps.LatLng(
-          inputval.Animalhosptl[1].row[i].REFINE_WGS84_LAT,
-          inputval.Animalhosptl[1].row[i].REFINE_WGS84_LOGT
+        latlng: new kakao.maps.LatLng( // 화면에 표시
+          inputval.Animalhosptl[1].row[i].REFINE_WGS84_LAT, // 위도
+          inputval.Animalhosptl[1].row[i].REFINE_WGS84_LOGT // 경도
         ),
       };
       positionsHospital.push(vals);
     }
   }
 }
-
+// 보호소
 function pushPositions1(inputval){
   for (var i = 0; i < inputval.OrganicAnimalProtectionFacilit[1].row.length; i++) {
 
@@ -127,12 +130,12 @@ async function makeMaps() {
 
   map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-  // 마커 이미지의 이미지 주소입니다
+  // 마커 이미지의 이미지 주소입니다 (병원)
   var imageSrc = "resources/img/hospital.png";
   // 마커 이미지의 이미지 크기 입니다
   var imageSize = new kakao.maps.Size(32, 32);
 
-  // 마커 이미지의 이미지 주소입니다
+  // 마커 이미지의 이미지 주소입니다(보호소)
   var imageSrc1 = "resources/img/shield.png";
 
 
@@ -156,6 +159,7 @@ async function makeMaps() {
   }
 
   // 보호소
+	// 폐업을 제외한 내용이 담긴 배열 길이
   for (var i = 0; i < positionsProtection.length; i++) {
     // 마커 이미지를 생성합니다
     var markerImage = new kakao.maps.MarkerImage(imageSrc1, imageSize);

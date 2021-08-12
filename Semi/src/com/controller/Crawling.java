@@ -77,19 +77,23 @@ public class Crawling {
 				continue;
 			}
 			// 파일 저장 경로
-			File file = new File(savePath+name);
+			File file = new File(savePath+"/"+name);
+			File file1 = new File(savePath);
+			// 경로에 폴더가 없으면 상위폴더까지 생성
 			try {
-				if (!file.exists()) {
-					file.mkdirs();
+				if (!file1.exists()) {
+					file1.mkdirs();
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
+			// 크롤링한 이미지 리스트 저장
 			ImageIO.write(jpg, "jpg", file);
 			if (name.contains("jpg")) {
 				listImg.add(name);
 			}
 		}
+		// 컨트롤러로 값을 넘겨주기 위해 사진에 맞는 내용 매칭해서 리스트 저장
 		for (int i = 0; i < listImg.size(); i++) {
 			String all = listImg.get(i) + "@" + contentList.get(i);
 			successList.add(all);
@@ -162,19 +166,23 @@ public class Crawling {
 				continue;
 			}
 			// 파일 저장 경로
-			File file = new File(savePath+name);
+			File file = new File(savePath+"/"+name);
+			File file1 = new File(savePath);
+			// 저장 경로에 폴더가 없으면 상위 폴더까지 만듬
 			try {
-				if (!file.exists() ) {
-					file.mkdirs();
+				if (!file1.exists()) {
+					file1.mkdirs();
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
+			// 크롤링한 이미지 리스트 저장
 			ImageIO.write(jpg, "jpg", file);
 			if (name.contains("jpg")) {
 				listImg.add(name);
 			}
 		}
+		// 컨트롤러로 값을 넘겨주기 위해 사진에 맞는 내용 매칭해서 리스트 저장
 		for (int i = 0; i < listImg.size(); i++) {
 			String all = listImg.get(i) + "@" + contentList.get(i);
 			successList.add(all);

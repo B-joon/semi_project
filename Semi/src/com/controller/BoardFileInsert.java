@@ -20,7 +20,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 
-@WebServlet("/BoardFileInsert.do")
+@WebServlet("/BoardFileInsert1.do")
 public class BoardFileInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -52,11 +52,14 @@ public class BoardFileInsert extends HttpServlet {
 		// 이미지를 업로드할 경로		
 		String saveDirectory = request.getSession().getServletContext().getRealPath("/savefile");
 		
-		// 파일 저장 경로
-		File file = new File(saveDirectory);
+		String savefile = "savefile";
+    	ServletContext scontext = getServletContext();
+    	String realFolder = scontext.getRealPath(savefile);
+    	// 폴더명을 저장
+    	File folder = new File(realFolder);
 		try {
-			if (!file.exists()) {
-				file.mkdirs();
+			if (!folder.exists()) {
+				folder.mkdirs();
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();
@@ -83,7 +86,6 @@ public class BoardFileInsert extends HttpServlet {
 			// 파일이 업로드 되지 않았을때 
 			out.print("파일 업로드 되지 않았음"); 
 		} else { // 파일이 업로드 되었을때 
-			//fileName=new String(fileName.getBytes("8859_1"),"UTF-8");
 			String uploadPath = "savefile\\" + fileName;
 			
 			System.out.println("savefile\\" + fileName);

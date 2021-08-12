@@ -22,6 +22,7 @@
 		<div class="container d-flex justify-content-center">
 			<div class="col-9">
 				<div class="mb-4">
+					<!-- 맵이 보이게 해주는 곳 -->
 					<div id="map" style="width: 100%; height: 50vh">
 					</div>
 				</div>
@@ -32,6 +33,7 @@
 					<button class="btn btn-primary" onclick="hideMarkers1()">보호소 마커 감추기</button>
 					
 				</p>
+				<!-- 카카오 지도를 불러오는 스크립트 api 사용시 해당 서버 URL입력 -->
 				<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=dc1a9444cf387fa306e61aaf8a1eb0b9"></script>
 				<script src="resources/js/map.js"></script>
 			</div>

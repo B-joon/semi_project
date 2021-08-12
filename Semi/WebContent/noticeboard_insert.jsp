@@ -123,6 +123,7 @@
 		</div>
 	</div>
 	<script>
+	// 썸머노트를 설정
 		$('#summernote').summernote({
 			height : 700, // 에디터 높이
 			minHeight : 500, // 최소 높이
@@ -130,8 +131,11 @@
 			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
 			lang : "ko-KR", // 한글 설정
 			placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
+			// 리턴되는 또 다른 함수
 			callbacks: {
+				// 이미지를 업로드 하기 위해서
 			    onImageUpload: function(files) {
+			    	// 하나만 넣기 위해서 0으로 지정
 		            sendFile(files[0]);
 			    }
 			  }
@@ -139,6 +143,7 @@
 
 	
 	function sendFile(file) {
+		// 아작스에 데이터를 전송해줄 수 있는 객체
 		var form_data = new FormData();
 	       form_data.append('file', file);
 	       $.ajax({
